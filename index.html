@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>AR</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+
+    <!-- import script -->
+    <script type="text/javascript" src="./scripts/soundHandler.js"></script>
+    <script type="text/javascript" src="./scripts/animation.js"></script>
+    <!-- <script type="text/javascript" src="./scripts/main.js"></script> -->
+  </head>
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene
+      embedded
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 4x4_BCH_13_9_3;"
+    >
+
+      <!-- 에셋 -->
+      <a-assets>
+        <img id="고양이" src="./assets/고양이.png" />
+        <audio
+          id="고양이소리"
+          src="./assets/고양이소리.mp3"
+          type="audio/mp3"
+          preload="auto"
+        ></audio>
+      </a-assets>
+
+      <!-- 마커 -->
+      <a-marker type="barcode" value="0">
+        <a-sound src="#고양이소리" autoplay="false" volume="5" soundhandler>
+        </a-sound>
+
+        <a-entity rotation="0 0 0">
+          <a-image
+            src="#고양이"
+            position="0 2.5 0"
+            rotation="0 0 0"
+            scale="8 12 12"
+          ></a-image>
+        </a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
+
+<!-- 마커
+<a-marker id="marker-b0-p1" type="barcode" value="0">
+  <a-sound id="sound-b0-p1" src="#b0-p1-so" autoplay="false" soundhandler>
+  </a-sound>
+
+  <a-entity rotation="0 0 0">
+    <a-image
+      src="#b0-p1-bg"
+      position="0 2.5 0"
+      rotation="0 0 0"
+      scale="5 5 5"
+    ></a-image>
+    <a-image
+      src="#b0-p1-ob"
+      position="0 2.5 0.5"
+      rotation="0 0 0"
+      scale="5 5 5"
+      animation-jump
+    >
+    </a-image>
+  </a-entity>
+</a-marker>
+-->
